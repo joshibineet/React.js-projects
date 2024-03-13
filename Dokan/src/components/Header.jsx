@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className='flex flex-col md:flex-row bg-slate-700 justify-between items-center shadow-xl py-5 px-10 text-white sticky top-0'>
+    <header className='flex flex-col md:flex-row bg-slate-700 justify-between items-center shadow-xl py-5 px-10 text-white sticky top-0 z-50 '>
       <div className="logo">
         <img src="./Dokan.png" className='w-24 h-10 rounded-md' alt="Image" />
       </div>

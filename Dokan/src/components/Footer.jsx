@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Footer } from 'flowbite-react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { FaFacebook } from "react-icons/fa";
+import { BiLogoInstagramAlt } from "react-icons/bi";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -27,14 +29,13 @@ const Footer = () => {
       </div>
      </div>
       <div className="absolute bottom-0 left-0 w-full  p-4 text-center bg-gray-700 tracking-wider">
-      <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} />
-            <Footer.Icon href="#" icon={BsInstagram} />
-            <Footer.Icon href="#" icon={BsTwitter} />
-            <Footer.Icon href="#" icon={BsGithub} />
-            <Footer.Icon href="#" icon={BsDribbble} />
-          </div>
+      <p className='tracking-widest mx-auto flex justify-between ml-6'>&copy; {new Date().getFullYear()} dokan. All rights reserved.</p>
+      <div className='flex items-center justify-end gap-10 mr-5 '> 
+        <a href=""><FaFacebook /></a>
+      <a href=""><BiLogoInstagramAlt /></a>
+      <a href=""><FaLinkedin /></a>
+      <a href=""><FaGithub /></a>
+      </div>
       </div>
     </footer>
   );
