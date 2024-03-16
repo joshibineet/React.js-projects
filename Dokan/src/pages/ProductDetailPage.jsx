@@ -5,17 +5,14 @@ import { IoIosPricetags } from "react-icons/io";
 import { FaStar } from "react-icons/fa";
 
 const ProductDetailPage = () => {
-  const params = useParams();
   const [singleProduct, setSingleProduct] = useState([]);
+  const  [currentImage, setCurrentImage] = useState(null);
+  console.log(currentImage);
+  const params = useParams();
 const priceAfterDiscount = singleProduct.price -(singleProduct.price * singleProduct.discountPercentage) / 100;
 const actualPrice = priceAfterDiscount.toFixed(0); 
 
 const rating = singleProduct?.rating?.toFixed(0);
-
-const RatingComponent = () => {
-  return;
-};
-
   useEffect(() => {
     async function getSingleProductDetails() {
       let response = await axios.get(
@@ -26,16 +23,26 @@ const RatingComponent = () => {
     }
     getSingleProductDetails();
   }, [params.id]);
+
+  useEffect(() => {
+    setCurrentImage(singleProduct.thumbnail);
+  }, [singleProduct.thumbnail]);
+  
   return (
     <section>
-      <div className="conatiner p-10 flex gap-10">
-        <div className="w-1/2  flex justify-between">
-          <div className="thumbnails w-1/4">
-
-            {singleProduct.images.map((item) => )}
+      <div className="conatiner md:p-10 md:flex md:gap-10  ">
+        <div className="w-1/2  md:flex md:justify-between">
+          <div className="thumbnails w-1/4  flex flex-col gap-3">
+            {singleProduct.images?.map((item, index) => (
+              <img 
+              key={index} 
+              src={item} 
+              onClick={() => setCurrentImage(item)}
+              className="size-24 bg-gray-200 py-3 rounded-md"/>
+             ))} 
           </div>
-          <div className="imagewrapper ">
-            <img src={singleProduct.thumbnail} alt="" />
+          <div className="imagewrapper md:ml-5 ">
+            <img src={currentImage} className="h-full rounded-md" alt="" />
           </div>
         </div>
         <div className="w-1/2">
@@ -49,7 +56,7 @@ const RatingComponent = () => {
             <span className="text-sm bg-gray-400 px-3 py-1 rounded-md">{singleProduct.brand}</span>
             </h3>
             <div className="meta flex text-xl font-bold gap-5 my-4 items-center">
-              <div className="item flex items-center gap-3 ">
+              <div className="item md:flex md:items-center gap-3 ">
                 <IoIosPricetags />
                 <span>$ {actualPrice}</span>
               </div>
@@ -59,6 +66,11 @@ const RatingComponent = () => {
             <p>{singleProduct.description}</p>
             <div className="moreInfo text-green-500">
               {singleProduct.stock == 0 ? "Out of Stock" : "In Stock"}
+            </div>
+
+            <div className="buttons flex gap-5 items-center py-3">
+               <button className="btn">Buy Now</button>
+               <button className="btn">Add to Cart</button>
             </div>
           </div>
         </div>

@@ -65,7 +65,7 @@ const ListProduct = () => {
                   <p className="text-sm opacity-70">{item.description}</p>
 
                  <Link to={`/${item.id}`}>
-                 <button className="btn mt-5 px-3 py-2 text-sm bg-blue-500 text-white rounded-md">
+                 <button className="btn mt-5 px-3 py-2 text-sm  text-white rounded-md">
                       Read More
                     </button>
                  </Link>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaCartShopping } from "react-icons/fa6";
 
 const Header = () => {
   return (
@@ -15,11 +16,16 @@ const Header = () => {
         <Link to="/blog" className='hover:text-orange-400'>Blog</Link>
         <Link to="/contact" className='hover:text-orange-400'>Contact</Link>
       </nav>
-      <div className="buttons mt-4 md:mt-0">
-        <button className='bg-white text-black px-6 py-2 rounded-md hover:bg-blue-400'>Login</button>
+      <div className="buttons mt-4 md:mt-0 transition-transform duration-300  hover:scale-105">
+        <button className='btn mr-5'>
+         <FaCartShopping />
+        </button>
+        <button className='bg-white text-black px-6 py-2 rounded-2xl hover:bg-blue-400 font-semibold text-lg '>
+          Sign In</button>
       </div>
     </header>
   );
 };
+
 
 export default Header;
